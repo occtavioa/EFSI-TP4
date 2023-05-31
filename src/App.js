@@ -1,9 +1,11 @@
-import Cita from './Componentes/Cita/Cita'
+import ListadoCitas from './Componentes/ListadoCitas/ListadoCitas';
 import Formulario from './Componentes/Formulario/Formulario'
 import Subtitulo from './Componentes/Subtitulo/Subtitulo';
 import './App.css'
+import { useState } from 'react';
 
 function App() {
+  const [citas, setCitas] = useState([]);
   return (
     <div className="App">
       <h1>ADMINISTRADOR DE PACIENTES</h1>
@@ -11,13 +13,11 @@ function App() {
         <div className='row'>
           <div className="one-half column">
             <Subtitulo s="Crear mi cita" />
-            <Formulario />
+            <Formulario setCitas={() => alert("xD")} citas={citas}/>
           </div>
           <div className="one-half column">
             <Subtitulo s="administra tus citas"/>
-            <Cita mascota="m" dueño="d" fecha={new Date().toISOString()} hora={new Date().toTimeString()} sintomas ="asd" />
-            <Cita mascota="m" dueño="d" fecha={new Date().toISOString()} hora={new Date().toTimeString()} sintomas ="asd" />
-            <Cita mascota="m" dueño="d" fecha={new Date().toISOString()} hora={new Date().toTimeString()} sintomas ="asd" />
+            <ListadoCitas citas={citas}/>
           </div>
         </div>
       </div>
