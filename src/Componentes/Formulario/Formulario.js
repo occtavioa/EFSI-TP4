@@ -1,9 +1,8 @@
 import './Formulario.css'
 import Input from './Input/Input'
 
-function Formulario(setCitas, citas) {
+function Formulario({setCitas, citas}) {
     return <form id="formCrearCita" onSubmit={(e) => {
-        setCitas();
         let inputs = Array.from(e.target.elements).map((element) => element.value)
         setCitas([{
             mascota: inputs[0],
@@ -11,9 +10,8 @@ function Formulario(setCitas, citas) {
             fecha: inputs[2],
             hora: inputs[3],
             sintomas: inputs[4],
-        }, ...citas])
-        alert(setCitas);
-        alert(citas);
+        }, ...citas]);
+        e.preventDefault();
     }}>
         <Input l="Nombre Mascota" t="text" n="mascota" p="Nombre Mascota" />
         <Input l="Nombre Dueño" t="text" n="dueño" p="Nombre dueño de la mascota" />

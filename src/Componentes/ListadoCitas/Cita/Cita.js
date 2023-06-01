@@ -1,14 +1,20 @@
 import './Cita.css';
 
-function Cita(props) {
+function Cita({mascota, dueño, fecha, hora, sintomas, citas, setCitas}) {
   return (
     <div className='cita'>
-        <p>Mascota: <span>{props.mascota}</span></p>
-        <p>Dueño: <span>{props.dueño}</span></p>
-        <p>Fecha: <span>{props.fecha.split('T')[0]}</span></p>
-        <p>Hora: <span>{props.hora.slice(0,5)}</span></p>
-        <p>Sintomas: <span>{props.sintomas}</span></p>
-        <button className="button elimnar u-full-width">Eliminar ×</button>
+        <p>Mascota: <span>{mascota}</span></p>
+        <p>Dueño: <span>{dueño}</span></p>
+        <p>Fecha: <span>{fecha}</span></p>
+        <p>Hora: <span>{hora}</span></p>
+        <p>Sintomas: <span>{sintomas}</span></p>
+        <button className="button elimnar u-full-width" onClick={ () => {
+            citas.pop()
+            setCitas([
+              ...citas
+            ])
+          }
+        }>Eliminar ×</button>
     </div>
   );
 }
